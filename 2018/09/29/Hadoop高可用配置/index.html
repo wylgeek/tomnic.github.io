@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wylgeek.github.io.com">
-  <title>tomnic blog</title>
+  <title>Hadoop高可用配置 | tomnic blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="CDH灾备CDH高可用元数据库高可用HDFS高可用YARN高可用HBASE高可用其他组件高可用Hadoop高级特性数据副本机制hadoop默认情况数据存储三副本。数据存储时，若是数据块写到了A节点，则数据块的第一个副本会写到集群内A节点相同机架的另一台服务器上，数据块的第二个副本会写到集群内A节点的不同机架的一台服务器上。hdfs三副本机制，保证了数据的安全性。 数据平衡 DataNode间数据平">
+<meta name="keywords" content="hadoop,ha,灾备">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tomnic blog">
-<meta property="og:url" content="http://wylgeek.github.io.com/2018/09/29/Hadoop高可用/index.html">
+<meta property="og:title" content="Hadoop高可用配置">
+<meta property="og:url" content="http://wylgeek.github.io.com/2018/09/29/Hadoop高可用配置/index.html">
 <meta property="og:site_name" content="tomnic blog">
 <meta property="og:description" content="CDH灾备CDH高可用元数据库高可用HDFS高可用YARN高可用HBASE高可用其他组件高可用Hadoop高级特性数据副本机制hadoop默认情况数据存储三副本。数据存储时，若是数据块写到了A节点，则数据块的第一个副本会写到集群内A节点相同机架的另一台服务器上，数据块的第二个副本会写到集群内A节点的不同机架的一台服务器上。hdfs三副本机制，保证了数据的安全性。 数据平衡 DataNode间数据平">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-21T02:28:14.445Z">
+<meta property="og:updated_time" content="2018-09-29T08:26:54.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tomnic blog">
+<meta name="twitter:title" content="Hadoop高可用配置">
 <meta name="twitter:description" content="CDH灾备CDH高可用元数据库高可用HDFS高可用YARN高可用HBASE高可用其他组件高可用Hadoop高级特性数据副本机制hadoop默认情况数据存储三副本。数据存储时，若是数据块写到了A节点，则数据块的第一个副本会写到集群内A节点相同机架的另一台服务器上，数据块的第二个副本会写到集群内A节点的不同机架的一台服务器上。hdfs三副本机制，保证了数据的安全性。 数据平衡 DataNode间数据平">
   
     <link rel="alternative" href="/atom.xml" title="tomnic blog" type="application/atom+xml">
@@ -154,8 +155,23 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hadoop高可用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Hadoop高可用配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hadoop高可用配置
+    </h1>
+  
+
+        
+        <a href="/2018/09/29/Hadoop高可用配置/" class="archive-article-date">
+  	<time datetime="2018-09-29T08:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-29</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -214,6 +230,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ha</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">灾备</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -264,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://wylgeek.github.io.com/2018/09/29/Hadoop高可用/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://wylgeek.github.io.com/2018/09/29/Hadoop高可用配置/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -278,15 +313,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/29/Hadoop集群修改主机名、IP/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hadoop集群修改主机名、IP
-        
-      </div>
-    </a>
   
+    <a href="/2018/09/29/Hadoop集群修改主机名、IP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hadoop集群修改主机名、IP</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -415,6 +446,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ha</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">灾备</a>
               </li>
             
             <div class="clearfix"></div>
