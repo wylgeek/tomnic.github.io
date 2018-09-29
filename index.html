@@ -152,113 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-CDH_ABOUT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/29/CDH_ABOUT/">Hadoop高可用配置</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/29/CDH_ABOUT/" class="archive-article-date">
-  	<time datetime="2018-09-29T08:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CDH灾备"><a href="#CDH灾备" class="headerlink" title="CDH灾备"></a>CDH灾备</h1><h2 id="CDH高可用"><a href="#CDH高可用" class="headerlink" title="CDH高可用"></a>CDH高可用</h2><h3 id="元数据库高可用"><a href="#元数据库高可用" class="headerlink" title="元数据库高可用"></a>元数据库高可用</h3><h3 id="HDFS高可用"><a href="#HDFS高可用" class="headerlink" title="HDFS高可用"></a>HDFS高可用</h3><h3 id="YARN高可用"><a href="#YARN高可用" class="headerlink" title="YARN高可用"></a>YARN高可用</h3><h3 id="HBASE高可用"><a href="#HBASE高可用" class="headerlink" title="HBASE高可用"></a>HBASE高可用</h3><h3 id="其他组件高可用"><a href="#其他组件高可用" class="headerlink" title="其他组件高可用"></a>其他组件高可用</h3><h2 id="Hadoop高级特性"><a href="#Hadoop高级特性" class="headerlink" title="Hadoop高级特性"></a>Hadoop高级特性</h2><h2 id="数据副本机制"><a href="#数据副本机制" class="headerlink" title="数据副本机制"></a>数据副本机制</h2><p>hadoop默认情况数据存储三副本。数据存储时，若是数据块写到了A节点，则数据块的第一个副本会写到集群内A节点相同机架的另一台服务器上，数据块的第二个副本会写到集群内A节点的不同机架的一台服务器上。hdfs三副本机制，保证了数据的安全性。</p>
-<h3 id="数据平衡"><a href="#数据平衡" class="headerlink" title="数据平衡"></a>数据平衡</h3><ul>
-<li><strong>DataNode间数据平衡</strong></li>
-</ul>
-<p><strong>数据不平衡原因：</strong></p>
-<ol>
-<li>向现有群集添加了新的DataNode</li>
-<li>集群机器磁盘坏死</li>
-<li>集群DataNode下线</li>
-</ol>
-<p><strong>解决方案：</strong></p>
-<p>HDFS提供了一个平衡器实用程序，可以分析块放置并平衡DataNode上的数据。平衡器移动块直到认为集群是平衡的，这意味着每个DataNode的利用率（节点上已用空间与节点总容量的比率）不同于集群的利用率（使用的空间比率）集群到集群的总容量）不超过给定的阈值百分比。但平衡器不在单个DataNode上的各个卷之间进行平衡。</p>
-<ul>
-<li><p><strong>DataNode磁盘数据平衡</strong></p>
-<p><strong>数据不平衡原因：</strong></p>
-<p>当我们往HDFS上写入新的数据块，DataNode 将会使用volume选择策略来为这个块选择存储的地方。目前Hadoop支持两种volume选择策略：round-robin 和 available space（详情参见：HDFS-1804），我们可以通过 <code>dfs.datanode.fsdataset.volume.choosing.policy</code> 参数来设置。默认为循环（round-robin）策略将新块均匀分布在可用磁盘上；而可用空间（ available-space ）策略优先将数据写入具有最大可用空间的磁盘。</p>
-<p>默认情况下，DataNode 是使用基于round-robin策略来写入新的数据块。然而在一个长时间运行的集群中，由于HDFS中的大规模文件删除或者通过往DataNode 中添加新的磁盘仍然会导致同一个DataNode中的不同磁盘存储的数据很不均衡。即使你使用的是基于可用空间的策略，卷（volume）不平衡仍可导致较低效率的磁盘I/O。比如所有新增的数据块都会往新增的磁盘上写，在此期间，其他的磁盘会处于空闲状态，这样新的磁盘将会是整个系统的瓶颈。</p>
-<p><strong>解决方案：</strong></p>
-<ol>
-<li>HDFS-1312 在线磁盘均衡器，旨在根据各种指标重新平衡正在运行DataNode上的磁盘数据；离线的脚本平衡脚本</li>
-<li>升级HDFS版本到3.0使用HDFS自带的磁盘均衡器(diskbalancer)</li>
-</ol>
-</li>
-</ul>
-<h2 id="CDH告警-邮件通知"><a href="#CDH告警-邮件通知" class="headerlink" title="CDH告警-邮件通知"></a>CDH告警-邮件通知</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>CDH提供了一套完整的监控告警机制，可以通过配置实现对机器、全部或者某个服务进行监控，若出现问题及时发送告警邮件到相关责任人，让责任人在第一时间知晓平台状况，从而快速定位解决问题，减少企业运维成本，降低因服务不可用带来的损失。</p>
-<h3 id="详细配置"><a href="#详细配置" class="headerlink" title="详细配置"></a>详细配置</h3><h2 id="服务器部署"><a href="#服务器部署" class="headerlink" title="服务器部署"></a>服务器部署</h2><h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>通过airflow进行任务调度调度，大数据集群通过sqoop将数据从业务数据库抽取到hive库；业务数据通过ETL加工最终把生成结果层数据；结果层通过kettle将数据从hive库导出到pg数据库。客户端通过连接高可用的Ngnix访问后端web界面，后端程序查询pg中的业务数据。</p>
-<h3 id="CDH集群服务器"><a href="#CDH集群服务器" class="headerlink" title="CDH集群服务器"></a>CDH集群服务器</h3><h3 id="应用服务器"><a href="#应用服务器" class="headerlink" title="应用服务器"></a>应用服务器</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ha</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">灾备</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/29/CDH_ABOUT/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Hadoop高可用配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -337,6 +230,113 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/09/29/Hadoop高可用配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CDH_ABOUT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/29/CDH_ABOUT/">Hadoop高可用配置</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/29/CDH_ABOUT/" class="archive-article-date">
+  	<time datetime="2018-09-29T08:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CDH灾备"><a href="#CDH灾备" class="headerlink" title="CDH灾备"></a>CDH灾备</h1><h2 id="CDH高可用"><a href="#CDH高可用" class="headerlink" title="CDH高可用"></a>CDH高可用</h2><h3 id="元数据库高可用"><a href="#元数据库高可用" class="headerlink" title="元数据库高可用"></a>元数据库高可用</h3><h3 id="HDFS高可用"><a href="#HDFS高可用" class="headerlink" title="HDFS高可用"></a>HDFS高可用</h3><h3 id="YARN高可用"><a href="#YARN高可用" class="headerlink" title="YARN高可用"></a>YARN高可用</h3><h3 id="HBASE高可用"><a href="#HBASE高可用" class="headerlink" title="HBASE高可用"></a>HBASE高可用</h3><h3 id="其他组件高可用"><a href="#其他组件高可用" class="headerlink" title="其他组件高可用"></a>其他组件高可用</h3><h2 id="Hadoop高级特性"><a href="#Hadoop高级特性" class="headerlink" title="Hadoop高级特性"></a>Hadoop高级特性</h2><h2 id="数据副本机制"><a href="#数据副本机制" class="headerlink" title="数据副本机制"></a>数据副本机制</h2><p>hadoop默认情况数据存储三副本。数据存储时，若是数据块写到了A节点，则数据块的第一个副本会写到集群内A节点相同机架的另一台服务器上，数据块的第二个副本会写到集群内A节点的不同机架的一台服务器上。hdfs三副本机制，保证了数据的安全性。</p>
+<h3 id="数据平衡"><a href="#数据平衡" class="headerlink" title="数据平衡"></a>数据平衡</h3><ul>
+<li><strong>DataNode间数据平衡</strong></li>
+</ul>
+<p><strong>数据不平衡原因：</strong></p>
+<ol>
+<li>向现有群集添加了新的DataNode</li>
+<li>集群机器磁盘坏死</li>
+<li>集群DataNode下线</li>
+</ol>
+<p><strong>解决方案：</strong></p>
+<p>HDFS提供了一个平衡器实用程序，可以分析块放置并平衡DataNode上的数据。平衡器移动块直到认为集群是平衡的，这意味着每个DataNode的利用率（节点上已用空间与节点总容量的比率）不同于集群的利用率（使用的空间比率）集群到集群的总容量）不超过给定的阈值百分比。但平衡器不在单个DataNode上的各个卷之间进行平衡。</p>
+<ul>
+<li><p><strong>DataNode磁盘数据平衡</strong></p>
+<p><strong>数据不平衡原因：</strong></p>
+<p>当我们往HDFS上写入新的数据块，DataNode 将会使用volume选择策略来为这个块选择存储的地方。目前Hadoop支持两种volume选择策略：round-robin 和 available space（详情参见：HDFS-1804），我们可以通过 <code>dfs.datanode.fsdataset.volume.choosing.policy</code> 参数来设置。默认为循环（round-robin）策略将新块均匀分布在可用磁盘上；而可用空间（ available-space ）策略优先将数据写入具有最大可用空间的磁盘。</p>
+<p>默认情况下，DataNode 是使用基于round-robin策略来写入新的数据块。然而在一个长时间运行的集群中，由于HDFS中的大规模文件删除或者通过往DataNode 中添加新的磁盘仍然会导致同一个DataNode中的不同磁盘存储的数据很不均衡。即使你使用的是基于可用空间的策略，卷（volume）不平衡仍可导致较低效率的磁盘I/O。比如所有新增的数据块都会往新增的磁盘上写，在此期间，其他的磁盘会处于空闲状态，这样新的磁盘将会是整个系统的瓶颈。</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li>HDFS-1312 在线磁盘均衡器，旨在根据各种指标重新平衡正在运行DataNode上的磁盘数据；离线的脚本平衡脚本</li>
+<li>升级HDFS版本到3.0使用HDFS自带的磁盘均衡器(diskbalancer)</li>
+</ol>
+</li>
+</ul>
+<h2 id="CDH告警-邮件通知"><a href="#CDH告警-邮件通知" class="headerlink" title="CDH告警-邮件通知"></a>CDH告警-邮件通知</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>CDH提供了一套完整的监控告警机制，可以通过配置实现对机器、全部或者某个服务进行监控，若出现问题及时发送告警邮件到相关责任人，让责任人在第一时间知晓平台状况，从而快速定位解决问题，减少企业运维成本，降低因服务不可用带来的损失。</p>
+<h3 id="详细配置"><a href="#详细配置" class="headerlink" title="详细配置"></a>详细配置</h3><h2 id="服务器部署"><a href="#服务器部署" class="headerlink" title="服务器部署"></a>服务器部署</h2><h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>通过airflow进行任务调度调度，大数据集群通过sqoop将数据从业务数据库抽取到hive库；业务数据通过ETL加工最终把生成结果层数据；结果层通过kettle将数据从hive库导出到pg数据库。客户端通过连接高可用的Ngnix访问后端web界面，后端程序查询pg中的业务数据。</p>
+<h3 id="CDH集群服务器"><a href="#CDH集群服务器" class="headerlink" title="CDH集群服务器"></a>CDH集群服务器</h3><h3 id="应用服务器"><a href="#应用服务器" class="headerlink" title="应用服务器"></a>应用服务器</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ha</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">灾备</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/29/CDH_ABOUT/">展开全文 >></a>
         </p>
       
 
