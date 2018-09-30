@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB 1. HDFS HA1.1.  介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计">
+<meta name="description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。 这在">
 <meta name="keywords" content="CDH,Hadoop,config">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CDH_Hadoop高可用启用与禁用.md">
 <meta property="og:url" content="http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用/index.html">
 <meta property="og:site_name" content="Embrace technology">
-<meta property="og:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB 1. HDFS HA1.1.  介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计">
+<meta property="og:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。 这在">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/1538289838007.png">
 <meta property="og:image" content="http://yoursite.com/images/clip_image002.jpg">
@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/images/clip_image004.png">
 <meta property="og:image" content="http://yoursite.com/images/clip_image006.png">
 <meta property="og:image" content="http://yoursite.com/images/clip_image008-1538290069254.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/30/images/1538290079464.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用/images/1538290079464.png">
 <meta property="og:image" content="http://yoursite.com/images/clip_image002-1538290125679.jpg">
 <meta property="og:image" content="http://yoursite.com/images/clip_image004-1538290125679.jpg">
 <meta property="og:image" content="http://yoursite.com/images/clip_image006-1538290125679.jpg">
@@ -125,10 +125,10 @@
 <meta property="og:image" content="http://yoursite.com/images/clip_image008-1538290233693.jpg">
 <meta property="og:image" content="http://yoursite.com/images/clip_image010-1538290233693.jpg">
 <meta property="og:image" content="http://yoursite.com/images/clip_image012-1538290233693.jpg">
-<meta property="og:updated_time" content="2018-09-30T08:27:21.857Z">
+<meta property="og:updated_time" content="2018-09-30T08:31:12.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDH_Hadoop高可用启用与禁用.md">
-<meta name="twitter:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB 1. HDFS HA1.1.  介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计">
+<meta name="twitter:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。 这在">
 <meta name="twitter:image" content="http://yoursite.com/images/1538289838007.png">
 
 
@@ -394,7 +394,7 @@
         <h1 id="CDH高可用"><a href="#CDH高可用" class="headerlink" title="CDH高可用"></a>CDH高可用</h1><h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>linux环境：centos7.4</p>
 <p>CDH版本：CDH5.12.0</p>
 <p>外置数据库（MariaDB）版本：5.5.56-MariaDB</p>
-<h2 id="1-HDFS-HA"><a href="#1-HDFS-HA" class="headerlink" title="1. HDFS HA"></a>1. HDFS HA</h2><h3 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1.  介绍"></a>1.1.  介绍</h3><p><img src="/images/1538289838007.png" alt=""></p>
+<h2 id="HDFS-HA"><a href="#HDFS-HA" class="headerlink" title="HDFS HA"></a>HDFS HA</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><img src="/images/1538289838007.png" alt=""></p>
 <p>在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。</p>
 <p>这在两个主要方面影响了HDFS集群的总体可用性：</p>
 <p>对于计划外事件（例如计算机崩溃），在操作员重新启动NameNode之前，群集将不可用。</p>
@@ -405,7 +405,7 @@
 <p>当Active节点执行任何名称空间修改时，它会将修改记录持久地记录到存储在共享目录中的编辑日志文件中。 Standby节点不断观察此目录以进行编辑，并在查看编辑时将其应用于自己的命名空间。如果发生故障转移，备用数据库将确保在将自身升级为活动状态之前已从共享存储中读取所有编辑内容。这可确保在发生故障转移之前完全同步命名空间状态。</p>
 <p>为了提供快速故障转移，备用节点还必须具有关于群集中块的位置的最新信息。为了实现这一点，DataNode配置了两个NameNode的位置，并向两者发送块位置信息和心跳。</p>
 <p>对于HA群集的正确操作而言，一次只有一个NameNode处于活动状态至关重要。否则，命名空间状态将在两者之间快速分歧，冒着数据丢失或其他不正确结果的风险。为了确保此属性并防止所谓的“裂脑情景”，管理员必须为共享存储配置至少一种防护方法。在故障转移期间，如果无法验证先前的活动节点是否已放弃其活动状态，则防护进程负责切断先前Active对共享编辑存储的访问。这可以防止它对命名空间进行任何进一步的编辑，从而允许新的Active安全地进行故障转移。</p>
-<h3 id="1-2-启用"><a href="#1-2-启用" class="headerlink" title="1.2.  启用"></a>1.2.  启用</h3><p>进入HDFS服务页面，点击“操作”下拉菜单中才“启用 High Availability”按钮。</p>
+<h3 id="启用"><a href="#启用" class="headerlink" title="启用"></a>启用</h3><p>进入HDFS服务页面，点击“操作”下拉菜单中才“启用 High Availability”按钮。</p>
 <p><img src="/images/clip_image002.jpg" alt=""></p>
 <p>启用HA之后，集群中会有两个NameNode，需要给两个NameNode取一个代理的名称，默认为nameservice1。</p>
 <p><img src="/images/clip_image004.jpg" alt=""></p>
@@ -416,7 +416,7 @@
 <p>点击“继续”</p>
 <p><img src="/images/clip_image012.png" alt=""></p>
 <p>点击“完成”按钮，完成配置。</p>
-<h3 id="1-3-禁用"><a href="#1-3-禁用" class="headerlink" title="1.3.  禁用"></a>1.3.  禁用</h3><p>进入HDFS界面，选择下拉列表的“禁用 High Availability”按钮。</p>
+<h3 id="禁用"><a href="#禁用" class="headerlink" title="禁用"></a>禁用</h3><p>进入HDFS界面，选择下拉列表的“禁用 High Availability”按钮。</p>
 <p><img src="/images/clip_image002-1538289934829.jpg" alt=""></p>
 <p>禁用HA之后，集群内只会有一个NameNode，则需要从高可用环境下的两个NameNode中选择一个NameNode，同时需要在一个节点安装SecondaryNameNode，如下图所示：</p>
 <p><img src="/images/clip_image004-1538289934830.jpg" alt=""></p>
@@ -424,10 +424,10 @@
 <p><img src="/images/clip_image006-1538289934830.jpg" alt=""></p>
 <p>点击“完成”按钮，完成配置。</p>
 <p><img src="/images/clip_image008.jpg" alt=""></p>
-<h2 id="2-YARN-HA"><a href="#2-YARN-HA" class="headerlink" title="2. YARN HA"></a>2. YARN HA</h2><h3 id="2-1-介绍"><a href="#2-1-介绍" class="headerlink" title="2.1.  介绍"></a>2.1.  介绍</h3><p><img src="..\images\1538289998618.png" alt="1538289998618"></p>
+<h2 id="YARN-HA"><a href="#YARN-HA" class="headerlink" title="YARN HA"></a>YARN HA</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p><img src="..\images\1538289998618.png" alt="1538289998618"></p>
 <p>​    ResourceManager HA通过Active-standby资源管理器对实现。在启动时，每个ResourceManager都处于待机状态;进程已启动，但未加载状态。当其中一个ResourceManagers转换为活动状态时，ResourceManager从指定的状态存储加载内部状态并启动所有内部服务。转换为活动的激励来自管理员（通过CLI）或启用自动故障转移时的集成故障转移控制器。</p>
 <p>​    运行两个ResourceManagers时，可能会出现一个双脑情况，资源管理器都认为它们处于活动状态。为避免这种情况，只有一个ResourceManager应该能够执行活动操作，而另一个ResourceManager应该被“隔离”。基于ZooKeeper的状态存储（ZKRMStateStore）只允许单个ResourceManager对存储状态进行更改，隐式屏蔽其他ResourceManager。这是通过ResourceManager声明对根znode的独占create-delete权限来完成的。根znode上的ACL是根据为存储配置的ACL自动创建的;在安全集群的情况下，建议为根主机设置ACL，以便两个ResourceManagers共享读写管理员访问权限，但具有独占的create-delete访问权限。防护是隐式的，不需要显式配置（如HDFS和MRv1中的防护一样）。</p>
-<h3 id="2-2-启用"><a href="#2-2-启用" class="headerlink" title="2.2.  启用"></a>2.2.  启用</h3><p>进入YARN服务页面，点击“操作”下拉菜单中才“启用 High Availability”按钮。</p>
+<h3 id="启用-1"><a href="#启用-1" class="headerlink" title="启用"></a>启用</h3><p>进入YARN服务页面，点击“操作”下拉菜单中才“启用 High Availability”按钮。</p>
 <p><img src="/images/clip_image002-1538290069254.jpg" alt=""></p>
 <p>选择需要安装ResourceManager的另外一个节点，点击“继续”     </p>
 <p><img src="/images/clip_image004.png" alt=""></p>
@@ -435,16 +435,16 @@
 <p><img src="/images/clip_image006.png" alt=""></p>
 <p><img src="/images/clip_image008-1538290069254.png" alt=""></p>
 <p>YARN高可用启用之后，服务页面如下图所示</p>
-<p><img src="..\images\1538290079464.png" alt="1538290079464"></p>
-<h3 id="2-3-禁用"><a href="#2-3-禁用" class="headerlink" title="2.3.禁用"></a>2.3.禁用</h3><p>进入YARN界面，选择下拉列表的“禁用 High Availability”按钮。</p>
+<p><img src="images/1538290079464.png" alt=""></p>
+<h3 id="禁用-1"><a href="#禁用-1" class="headerlink" title="禁用"></a>禁用</h3><p>进入YARN界面，选择下拉列表的“禁用 High Availability”按钮。</p>
 <p><img src="/images/clip_image002-1538290125679.jpg" alt=""></p>
 <p>禁用HA之后，集群内只会有一个ResourceManager，则需要从高可用环境下的两个已经装了ResourceManager主机中选择一个，选择好以后，选择“继续”</p>
 <p><img src="/images/clip_image004-1538290125679.jpg" alt=""></p>
 <p>点击“完成”，完成配置 </p>
 <p><img src="/images/clip_image006-1538290125679.jpg" alt=""></p>
 <p><img src="/images/clip_image008-1538290125679.jpg" alt=""></p>
-<h2 id="3-HBASE-HA"><a href="#3-HBASE-HA" class="headerlink" title="3. HBASE HA"></a>3. HBASE HA</h2><h3 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1.  介绍"></a>3.1.  介绍</h3><p>​    HBase的大多数方面在标准配置中都是高度可用的。集群通常由一个Master和三个或更多RegionServers组成，数据存储在HDFS中。要确保每个组件都具有高可用性，请配置一个或多个备份主服务器。备份主服务器在活动主服务器之外的其他主机上运行。</p>
-<h3 id="3-2-启用"><a href="#3-2-启用" class="headerlink" title="3.2.  启用"></a>3.2.  启用</h3><p>首先进入hbase服务界面，再进入“实例”界面。</p>
+<h2 id="HBASE-HA"><a href="#HBASE-HA" class="headerlink" title="HBASE HA"></a>HBASE HA</h2><h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3><p>​    HBase的大多数方面在标准配置中都是高度可用的。集群通常由一个Master和三个或更多RegionServers组成，数据存储在HDFS中。要确保每个组件都具有高可用性，请配置一个或多个备份主服务器。备份主服务器在活动主服务器之外的其他主机上运行。</p>
+<h3 id="启用-2"><a href="#启用-2" class="headerlink" title="启用"></a>启用</h3><p>首先进入hbase服务界面，再进入“实例”界面。</p>
 <p><img src="/images/clip_image002.png" alt=""></p>
 <p>点击“添加角色”，进入如下界面</p>
 <p><img src="/images/clip_image004-1538290203931.png" alt=""></p>
@@ -461,7 +461,7 @@
 <p><img src="/images/clip_image016.jpg" alt=""></p>
 <p>完成服务添加之后，就会出现两个Master角色实例，一个是备份状态，一个是活动状态，如下图所示：</p>
 <p><img src="/images/clip_image018.jpg" alt=""></p>
-<h3 id="3-3-禁用"><a href="#3-3-禁用" class="headerlink" title="3.3.  禁用"></a>3.3.  禁用</h3><p>禁用Hbase高可用，只需要卸载掉Master角色实例，只剩一个Master角色实例即可，操作如下：</p>
+<h3 id="禁用-2"><a href="#禁用-2" class="headerlink" title="禁用"></a>禁用</h3><p>禁用Hbase高可用，只需要卸载掉Master角色实例，只剩一个Master角色实例即可，操作如下：</p>
 <p>选择备份的Master角色实例，停止该角色实例</p>
 <p><img src="/images/clip_image002-1538290233690.jpg" alt=""></p>
 <p>点击“停止”按钮</p>
@@ -687,7 +687,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CDH高可用"><span class="nav-number">1.</span> <span class="nav-text">CDH高可用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境说明"><span class="nav-number">1.1.</span> <span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HDFS-HA"><span class="nav-number">1.2.</span> <span class="nav-text">1. HDFS HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-介绍"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1.  介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-启用"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.  启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-禁用"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.3.  禁用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-YARN-HA"><span class="nav-number">1.3.</span> <span class="nav-text">2. YARN HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-介绍"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1.  介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-启用"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2.  启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-禁用"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.3.禁用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-HBASE-HA"><span class="nav-number">1.4.</span> <span class="nav-text">3. HBASE HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-介绍"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1.  介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-启用"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2.  启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-禁用"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3.  禁用</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CDH高可用"><span class="nav-number">1.</span> <span class="nav-text">CDH高可用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境说明"><span class="nav-number">1.1.</span> <span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS-HA"><span class="nav-number">1.2.</span> <span class="nav-text">HDFS HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启用"><span class="nav-number">1.2.2.</span> <span class="nav-text">启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用"><span class="nav-number">1.2.3.</span> <span class="nav-text">禁用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN-HA"><span class="nav-number">1.3.</span> <span class="nav-text">YARN HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启用-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">禁用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBASE-HA"><span class="nav-number">1.4.</span> <span class="nav-text">HBASE HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启用-2"><span class="nav-number">1.4.2.</span> <span class="nav-text">启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用-2"><span class="nav-number">1.4.3.</span> <span class="nav-text">禁用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
