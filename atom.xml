@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-30T06:55:35.081Z</updated>
+  <updated>2018-09-30T07:57:37.582Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>CDH_Hadoop高可用启用与禁用.md</title>
-    <link href="http://yoursite.com/2018/09/30/CDH-Hadoop%E9%AB%98%E5%8F%AF%E7%94%A8%E5%90%AF%E7%94%A8%E4%B8%8E%E7%A6%81%E7%94%A8-md/"/>
-    <id>http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用-md/</id>
+    <link href="http://yoursite.com/2018/09/30/CDH-Hadoop%E9%AB%98%E5%8F%AF%E7%94%A8%E5%90%AF%E7%94%A8%E4%B8%8E%E7%A6%81%E7%94%A8/"/>
+    <id>http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用/</id>
     <published>2018-09-30T06:41:20.000Z</published>
-    <updated>2018-09-30T06:55:35.081Z</updated>
+    <updated>2018-09-30T07:57:37.582Z</updated>
     
     <summary type="html">
     
@@ -71,36 +71,6 @@
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
     
       <category term="数据平衡" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%B9%B3%E8%A1%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CDH Hadoop高可用启用与禁用</title>
-    <link href="http://yoursite.com/2018/09/29/CDH_Hadoop%E9%AB%98%E5%8F%AF%E7%94%A8%E5%90%AF%E7%94%A8%E4%B8%8E%E7%A6%81%E7%94%A8/"/>
-    <id>http://yoursite.com/2018/09/29/CDH_Hadoop高可用启用与禁用/</id>
-    <published>2018-09-29T08:14:05.000Z</published>
-    <updated>2018-09-30T05:46:45.239Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-      <category term="CDH配置" scheme="http://yoursite.com/categories/CDH%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
-      <category term="ha" scheme="http://yoursite.com/tags/ha/"/>
-    
-      <category term="灾备" scheme="http://yoursite.com/tags/%E7%81%BE%E5%A4%87/"/>
     
   </entry>
   
