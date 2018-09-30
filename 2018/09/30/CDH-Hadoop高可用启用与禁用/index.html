@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。 这在">
+<meta name="description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。">
 <meta name="keywords" content="CDH,Hadoop,config">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CDH_Hadoop高可用启用与禁用.md">
 <meta property="og:url" content="http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用/index.html">
 <meta property="og:site_name" content="Embrace Technology">
-<meta property="og:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。 这在">
+<meta property="og:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/1538289838007.png">
 <meta property="og:image" content="http://yoursite.com/images/clip_image002.jpg">
@@ -125,10 +125,10 @@
 <meta property="og:image" content="http://yoursite.com/images/clip_image008-1538290233693.jpg">
 <meta property="og:image" content="http://yoursite.com/images/clip_image010-1538290233693.jpg">
 <meta property="og:image" content="http://yoursite.com/images/clip_image012-1538290233693.jpg">
-<meta property="og:updated_time" content="2018-09-30T08:31:12.195Z">
+<meta property="og:updated_time" content="2018-09-30T09:47:53.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDH_Hadoop高可用启用与禁用.md">
-<meta name="twitter:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。 这在">
+<meta name="twitter:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB HDFS HA介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。">
 <meta name="twitter:image" content="http://yoursite.com/images/1538289838007.png">
 
 
@@ -410,6 +410,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/30/CDH-Hadoop高可用启用与禁用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/30/CDH-Hadoop高可用启用与禁用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -450,6 +461,7 @@
 <p>外置数据库（MariaDB）版本：5.5.56-MariaDB</p>
 <h2 id="HDFS-HA"><a href="#HDFS-HA" class="headerlink" title="HDFS HA"></a>HDFS HA</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><img src="/images/1538289838007.png" alt=""></p>
 <p>在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。</p>
+<a id="more"></a>
 <p>这在两个主要方面影响了HDFS集群的总体可用性：</p>
 <p>对于计划外事件（例如计算机崩溃），在操作员重新启动NameNode之前，群集将不可用。</p>
 <p>计划维护事件（如NameNode计算机上的软件或硬件升级）将导致群集停机时间窗口。</p>
@@ -598,6 +610,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -904,6 +926,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用/';
+          this.page.identifier = '2018/09/30/CDH-Hadoop高可用启用与禁用/';
+          this.page.title = 'CDH_Hadoop高可用启用与禁用.md';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -939,7 +981,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {
