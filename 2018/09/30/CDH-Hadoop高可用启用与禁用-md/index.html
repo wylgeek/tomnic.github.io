@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="CDH,Hadoop,config," />
 
 
 
@@ -81,16 +81,55 @@
 
 
 
-<meta name="description" content="learn more,gain more!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Embrace technology">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB 1. HDFS HA1.1.  介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计">
+<meta name="keywords" content="CDH,Hadoop,config">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CDH_Hadoop高可用启用与禁用.md">
+<meta property="og:url" content="http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用-md/index.html">
 <meta property="og:site_name" content="Embrace technology">
-<meta property="og:description" content="learn more,gain more!">
+<meta property="og:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB 1. HDFS HA1.1.  介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/1538289838007.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image002.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image004.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image006.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image008.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image010.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image012.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image002-1538289934829.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image004-1538289934830.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image006-1538289934830.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image008.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/1538289998618.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image002-1538290069254.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image004.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image006.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image008-1538290069254.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/1538290079464.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image002-1538290125679.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image004-1538290125679.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image006-1538290125679.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image008-1538290125679.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image002.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image004-1538290203931.png">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image006-1538290203932.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image008-1538290203932.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image010.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image012.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image014.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image016.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image018.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image002-1538290233690.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image004-1538290233691.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image006-1538290233693.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image008-1538290233693.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image010-1538290233693.jpg">
+<meta property="og:image" content="e:/Program%20Files/blog/source/_posts/assets/clip_image012-1538290233693.jpg">
+<meta property="og:updated_time" content="2018-09-30T06:55:35.081Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Embrace technology">
-<meta name="twitter:description" content="learn more,gain more!">
+<meta name="twitter:title" content="CDH_Hadoop高可用启用与禁用.md">
+<meta name="twitter:description" content="CDH高可用环境说明linux环境：centos7.4 CDH版本：CDH5.12.0 外置数据库（MariaDB）版本：5.5.56-MariaDB 1. HDFS HA1.1.  介绍 在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计">
+<meta name="twitter:image" content="e:/Program%20Files/blog/source/_posts/assets/1538289838007.png">
 
 
 
@@ -120,13 +159,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用-md/"/>
 
 
 
 
 
-  <title>Embrace technology</title>
+  <title>CDH_Hadoop高可用启用与禁用.md | Embrace technology</title>
   
 
 
@@ -145,8 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,9 +287,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -281,9 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/30/CDH-Hadoop高可用启用与禁用-md/" itemprop="url">CDH_Hadoop高可用启用与禁用.md</a></h1>
+          <h1 class="post-title" itemprop="name headline">CDH_Hadoop高可用启用与禁用.md</h1>
         
 
         <div class="post-meta">
@@ -355,9 +391,7 @@
       
 
       
-        
-          
-            <h1 id="CDH高可用"><a href="#CDH高可用" class="headerlink" title="CDH高可用"></a>CDH高可用</h1><h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>linux环境：centos7.4</p>
+        <h1 id="CDH高可用"><a href="#CDH高可用" class="headerlink" title="CDH高可用"></a>CDH高可用</h1><h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>linux环境：centos7.4</p>
 <p>CDH版本：CDH5.12.0</p>
 <p>外置数据库（MariaDB）版本：5.5.56-MariaDB</p>
 <h2 id="1-HDFS-HA"><a href="#1-HDFS-HA" class="headerlink" title="1. HDFS HA"></a>1. HDFS HA</h2><h3 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1.  介绍"></a>1.1.  介绍</h3><p><img src="E:\Program Files\blog\source\_posts\assets\1538289838007.png" alt="1538289838007"></p>
@@ -441,8 +475,6 @@
 <p>完成HA禁用操作</p>
 <p><img src="E:\Program Files\blog\source\_posts\assets\clip_image012-1538290233693.jpg" alt="img"></p>
 
-          
-        
       
     </div>
     
@@ -457,349 +489,40 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/HDFS数据平衡/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tomnic.wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Embrace technology">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/30/HDFS数据平衡/" itemprop="url">HDFS数据平衡相关</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-30T10:14:05+08:00">
-                2018-09-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop相关/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop相关</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/CDH/" rel="tag"># CDH</a>
           
-
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
           
-            
+            <a href="/tags/config/" rel="tag"># config</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="数据平衡"><a href="#数据平衡" class="headerlink" title="数据平衡"></a>数据平衡</h3><ul>
-<li><strong>DataNode间数据平衡</strong></li>
-</ul>
-<p><strong>数据不平衡原因：</strong></p>
-<ol>
-<li>向现有群集添加了新的DataNode</li>
-<li>集群机器磁盘坏死</li>
-<li>集群DataNode下线</li>
-</ol>
-<p><strong>解决方案：</strong></p>
-<p>HDFS提供了一个平衡器实用程序，可以分析块放置并平衡DataNode上的数据。平衡器移动块直到认为集群是平衡的，这意味着每个DataNode的利用率（节点上已用空间与节点总容量的比率）不同于集群的利用率（使用的空间比率）集群到集群的总容量）不超过给定的阈值百分比。但平衡器不在单个DataNode上的各个卷之间进行平衡。</p>
-<ul>
-<li><p><strong>DataNode磁盘数据平衡</strong></p>
-<p><strong>数据不平衡原因：</strong></p>
-<p>当我们往HDFS上写入新的数据块，DataNode 将会使用volume选择策略来为这个块选择存储的地方。目前Hadoop支持两种volume选择策略：round-robin 和 available space（详情参见：HDFS-1804），我们可以通过 <code>dfs.datanode.fsdataset.volume.choosing.policy</code> 参数来设置。默认为循环（round-robin）策略将新块均匀分布在可用磁盘上；而可用空间（ available-space ）策略优先将数据写入具有最大可用空间的磁盘。</p>
-<p>默认情况下，DataNode 是使用基于round-robin策略来写入新的数据块。然而在一个长时间运行的集群中，由于HDFS中的大规模文件删除或者通过往DataNode 中添加新的磁盘仍然会导致同一个DataNode中的不同磁盘存储的数据很不均衡。即使你使用的是基于可用空间的策略，卷（volume）不平衡仍可导致较低效率的磁盘I/O。比如所有新增的数据块都会往新增的磁盘上写，在此期间，其他的磁盘会处于空闲状态，这样新的磁盘将会是整个系统的瓶颈。</p>
-<p><strong>解决方案：</strong></p>
-<ol>
-<li>HDFS-1312 在线磁盘均衡器，旨在根据各种指标重新平衡正在运行DataNode上的磁盘数据；离线的脚本平衡脚本</li>
-<li>升级HDFS版本到3.0使用HDFS自带的磁盘均衡器(diskbalancer)</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/CDH_Hadoop高可用启用与禁用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tomnic.wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Embrace technology">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/29/CDH_Hadoop高可用启用与禁用/" itemprop="url">CDH Hadoop高可用启用与禁用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T16:14:05+08:00">
-                2018-09-29
-              </time>
+              <a href="/2018/09/30/HDFS数据平衡/" rel="next" title="HDFS数据平衡相关">
+                <i class="fa fa-chevron-left"></i> HDFS数据平衡相关
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH配置/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH配置</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="CDH高可用"><a href="#CDH高可用" class="headerlink" title="CDH高可用"></a>CDH高可用</h2><h3 id="元数据库高可用"><a href="#元数据库高可用" class="headerlink" title="元数据库高可用"></a>元数据库高可用</h3><h3 id="HDFS高可用"><a href="#HDFS高可用" class="headerlink" title="HDFS高可用"></a>HDFS高可用</h3><h2 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1.  介绍"></a>1.1.  介绍</h2><p><img src="C:\Users\tomnic\Desktop\1538274612996.png" alt="1538274612996"></p>
-<p>在Hadoop 2.0.0之前，NameNode是HDFS集群中的单点故障（SPOF）。每个群集都有一个NameNode，如果该机器或进程变得不可用，整个群集将无法使用，直到NameNode重新启动或在单独的计算机上启动。</p>
-<p>这在两个主要方面影响了HDFS集群的总体可用性：</p>
-<p>对于计划外事件（例如计算机崩溃），在操作员重新启动NameNode之前，群集将不可用。</p>
-<p>计划维护事件（如NameNode计算机上的软件或硬件升级）将导致群集停机时间窗口。</p>
-<p>HDFS高可用性功能通过提供在具有热备用的主动/被动配置中的同一群集中运行两个冗余NameNode的选项来解决上述问题。这样，在机器崩溃的情况下，可以快速故障转移到新的NameNode，或者为了计划维护，可以进行正常的管理员启动的故障转移。</p>
-<p>在典型的HA群集中，两台独立的计算机配置为NameNode。在任何时间点，其中一个NameNode处于活动状态，另一个处于待机状态。 Active NameNode负责集群中的所有客户端操作，而Standby只是充当从属服务器，维持足够的状态以在必要时提供快速故障转移。</p>
-<p>为了使备用节点保持其状态与活动节点同步，当前实现要求两个节点都可以访问共享存储设备上的目录（例如，来自NAS的NFS安装）。在将来的版本中可能会放宽此限制。</p>
-<p>当Active节点执行任何名称空间修改时，它会将修改记录持久地记录到存储在共享目录中的编辑日志文件中。 Standby节点不断观察此目录以进行编辑，并在查看编辑时将其应用于自己的命名空间。如果发生故障转移，备用数据库将确保在将自身升级为活动状态之前已从共享存储中读取所有编辑内容。这可确保在发生故障转移之前完全同步命名空间状态。</p>
-<p>为了提供快速故障转移，备用节点还必须具有关于群集中块的位置的最新信息。为了实现这一点，DataNode配置了两个NameNode的位置，并向两者发送块位置信息和心跳。</p>
-<p>对于HA群集的正确操作而言，一次只有一个NameNode处于活动状态至关重要。否则，命名空间状态将在两者之间快速分歧，冒着数据丢失或其他不正确结果的风险。为了确保此属性并防止所谓的“裂脑情景”，管理员必须为共享存储配置至少一种防护方法。在故障转移期间，如果无法验证先前的活动节点是否已放弃其活动状态，则防护进程负责切断先前Active对共享编辑存储的访问。这可以防止它对命名空间进行任何进一步的编辑，从而允许新的Active安全地进行故障转移。</p>
-<h2 id="1-2-启用"><a href="#1-2-启用" class="headerlink" title="1.2.  启用"></a>1.2.  启用</h2><p>进入HDFS服务页面，点击“操作”下拉菜单中才“启用 High Availability”按钮。</p>
-<p><img src="C:\Users\tomnic\AppData\Roaming\Typora\typora-user-images\1538274196577.png" alt="1538274196577"></p>
-<p>启用HA之后，集群中会有两个NameNode，需要给两个NameNode取一个代理的名称，默认为nameservice1。</p>
-<p> <img src="C:\Users\tomnic\AppData\Roaming\Typora\typora-user-images\1538274239142.png" alt="1538274239142"></p>
-<p>选择需要安装NameNode和JournalNode的主机：</p>
-<p><img src="C:\Users\tomnic\AppData\Roaming\Typora\typora-user-images\1538274261769.png" alt="1538274261769"></p>
-<p>填写NameNode和JournalNode的数据目录，如果目录不存在则需要手动去创建，具体如下图。<img src="file:///C:\Users\tomnic\AppData\Local\Temp\msohtmlclip1\01\clip_image002.png" alt="img"></p>
-<p><img src="file:///C:\Users\tomnic\AppData\Local\Temp\msohtmlclip1\01\clip_image004.png" alt="img"></p>
-<p>点击“继续”</p>
-<p><img src="file:///C:\Users\tomnic\AppData\Local\Temp\msohtmlclip1\01\clip_image006.png" alt="img"></p>
-<p>点击“完成”按钮，完成配置。</p>
-<h2 id="1-3-禁用"><a href="#1-3-禁用" class="headerlink" title="1.3.  禁用"></a>1.3.  禁用</h2><p>进入HDFS界面，选择下拉列表的“禁用 High Availability”按钮。</p>
-<p><img src="file:///C:\Users\tomnic\AppData\Local\Temp\msohtmlclip1\01\clip_image002.jpg" alt="img"></p>
-<p>禁用HA之后，集群内只会有一个NameNode，则需要从高可用环境下的两个NameNode中选择一个NameNode，同时需要在一个节点安装SecondaryNameNode，如下图所示：</p>
-<p><img src="file:///C:\Users\tomnic\AppData\Local\Temp\msohtmlclip1\01\clip_image004.jpg" alt="img"></p>
-<p>选择HDFS检查点目录，点击“继续”如下图</p>
-<p><img src="file:///C:\Users\tomnic\AppData\Local\Temp\msohtmlclip1\01\clip_image006.jpg" alt="img"></p>
-<p>点击“完成”按钮，完成配置。</p>
-<p><img src="file:///C:\Users\tomnic\AppData\Local\Temp\msohtmlclip1\01\clip_image008.jpg" alt="img"></p>
-<h3 id="YARN高可用"><a href="#YARN高可用" class="headerlink" title="YARN高可用"></a>YARN高可用</h3><h3 id="HBASE高可用"><a href="#HBASE高可用" class="headerlink" title="HBASE高可用"></a>HBASE高可用</h3><h3 id="其他组件高可用"><a href="#其他组件高可用" class="headerlink" title="其他组件高可用"></a>其他组件高可用</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -809,10 +532,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -820,6 +544,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -840,8 +568,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -940,6 +677,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CDH高可用"><span class="nav-number">1.</span> <span class="nav-text">CDH高可用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境说明"><span class="nav-number">1.1.</span> <span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HDFS-HA"><span class="nav-number">1.2.</span> <span class="nav-text">1. HDFS HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-介绍"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1.  介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-启用"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.  启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-禁用"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.3.  禁用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-YARN-HA"><span class="nav-number">1.3.</span> <span class="nav-text">2. YARN HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-介绍"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1.  介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-启用"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2.  启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-禁用"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.3.禁用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-HBASE-HA"><span class="nav-number">1.4.</span> <span class="nav-text">3. HBASE HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-介绍"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1.  介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-启用"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2.  启用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-禁用"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3.  禁用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1080,6 +833,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

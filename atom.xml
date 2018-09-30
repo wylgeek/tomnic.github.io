@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-30T05:47:07.924Z</updated>
+  <updated>2018-09-30T06:55:35.081Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CDH_Hadoop高可用启用与禁用.md</title>
+    <link href="http://yoursite.com/2018/09/30/CDH-Hadoop%E9%AB%98%E5%8F%AF%E7%94%A8%E5%90%AF%E7%94%A8%E4%B8%8E%E7%A6%81%E7%94%A8-md/"/>
+    <id>http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用-md/</id>
+    <published>2018-09-30T06:41:20.000Z</published>
+    <updated>2018-09-30T06:55:35.081Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="CDH配置" scheme="http://yoursite.com/categories/CDH%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="CDH" scheme="http://yoursite.com/tags/CDH/"/>
+    
+      <category term="Hadoop" scheme="http://yoursite.com/tags/Hadoop/"/>
+    
+      <category term="config" scheme="http://yoursite.com/tags/config/"/>
+    
+  </entry>
   
   <entry>
     <title>HDFS数据平衡相关</title>
