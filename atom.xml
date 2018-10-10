@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-08T05:08:28.507Z</updated>
+  <updated>2018-10-10T06:27:40.385Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring boot 集成 swagger2</title>
+    <link href="http://yoursite.com/2018/10/10/springboot%E9%9B%86%E6%88%90swagger2/"/>
+    <id>http://yoursite.com/2018/10/10/springboot集成swagger2/</id>
+    <published>2018-10-10T06:41:20.000Z</published>
+    <updated>2018-10-10T06:27:40.385Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="spring boot" scheme="http://yoursite.com/categories/spring-boot/"/>
+    
+    
+      <category term="spring boot" scheme="http://yoursite.com/tags/spring-boot/"/>
+    
+      <category term="swagger2" scheme="http://yoursite.com/tags/swagger2/"/>
+    
+      <category term="Restful" scheme="http://yoursite.com/tags/Restful/"/>
+    
+  </entry>
   
   <entry>
     <title>CDH_Hadoop高可用启用与禁用配置</title>

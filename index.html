@@ -307,6 +307,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/springboot集成swagger2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tomnic.wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Embrace Technology">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/10/springboot集成swagger2/" itemprop="url">spring boot 集成 swagger2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-10T14:41:20+08:00">
+                2018-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring-boot/" itemprop="url" rel="index">
+                    <span itemprop="name">spring boot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/10/springboot集成swagger2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/10/springboot集成swagger2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/10/10/springboot集成swagger2/" class="leancloud_visitors" data-flag-title="spring boot 集成 swagger2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>spring boot： 1.5.16.RELEASE</p>
+<p>swagger2： 2.2.0</p>
+<p>jdk：1.8 _152</p>
+<h2 id="spring-boot-集成-swagger2"><a href="#spring-boot-集成-swagger2" class="headerlink" title="spring boot 集成 swagger2"></a>spring boot 集成 swagger2</h2><h4 id="添加Swagger2依赖"><a href="#添加Swagger2依赖" class="headerlink" title="添加Swagger2依赖"></a>添加Swagger2依赖</h4><p>在<code>pom.xml</code>中加入Swagger2的依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.2.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.2.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="创建Swagger2配置类"><a href="#创建Swagger2配置类" class="headerlink" title="创建Swagger2配置类"></a>创建Swagger2配置类</h4><p>在<code>Application.java</code>同级创建Swagger2的配置类<code>Swagger2</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.linezone.biwork;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.PathSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.linezone.biwork.web"</span>))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"Spring Boot中使用Swagger2构建RESTful APIs"</span>)</span><br><span class="line">                .description(<span class="string">"Spring Boot Swagger2构建"</span>)</span><br><span class="line">                .termsOfServiceUrl(<span class="string">"https://wylgeek.github.io/"</span>)</span><br><span class="line">                .contact(<span class="string">"tomnic.wang"</span>)</span><br><span class="line">                .version(<span class="string">"1.0"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="添加文档内容"><a href="#添加文档内容" class="headerlink" title="添加文档内容"></a>添加文档内容</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>完成上述代码添加上，启动Spring Boot程序，访问：<a href="http://localhost:port/swagger-ui.html" target="_blank" rel="noopener">http://localhost:port/swagger-ui.html</a><br>。就能看到前文所展示的RESTful API的页面。我们可以再点开具体的API请求，以POST类型的/users请求为例，可找到上述代码中我们配置的Notes信息以及参数user的描述信息，如下图所示。</p>
+<p><img src="/images/1539152307715.png" alt=""></p>
+<h2 id="swagger2注解说明"><a href="#swagger2注解说明" class="headerlink" title="swagger2注解说明"></a>swagger2注解说明</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>swagger通过注解表明该接口会生成文档，包括接口名、请求方法、参数、返回信息的等等。</p>
+<ul>
+<li>@Api()用于类；<br>表示标识这个类是swagger的资源 </li>
+<li>@ApiOperation()用于方法；<br>表示一个http请求的操作 </li>
+<li>@ApiParam()用于方法，参数，字段说明；<br>表示对参数的添加元数据（说明或是否必填等） </li>
+<li>@ApiModel()用于类<br>表示对类进行说明，用于参数用实体类接收 </li>
+<li>@ApiModelProperty()用于方法，字段<br>表示对model属性的说明或者数据操作更改 </li>
+<li>@ApiIgnore()用于类，方法，方法参数<br>表示这个方法或者类被忽略 </li>
+<li>@ApiImplicitParam() 用于方法<br>表示单独的请求参数 </li>
+<li>@ApiImplicitParams() 用于方法，包含多个 @ApiImplicitParam</li>
+</ul>
+<h3 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h3><p><strong>@Api()</strong><br>用于类；表示标识这个类是swagger的资源<br>tags–表示说明<br>value–也是说明，可以使用tags替代<br><strong>但是tags如果有多个值，会生成多个list</strong></p>
+<p><strong>@ApiOperation()</strong> 用于方法；表示一个http请求的操作<br>value用于方法描述<br>notes用于提示内容<br>tags可以重新分组（视情况而用）<br><strong>@ApiParam()</strong> 用于方法，参数，字段说明；表示对参数的添加元数据（说明或是否必填等）<br>name–参数名<br>value–参数说明<br>required–是否必填</p>
+<p><strong>@ApiModel()</strong>用于类 ；表示对类进行说明，用于参数用实体类接收<br>value–表示对象名<br>description–描述<br>都可省略<br><strong>@ApiModelProperty()</strong>用于方法，字段； 表示对model属性的说明或者数据操作更改<br>value–字段说明<br>name–重写属性名字<br>dataType–重写属性类型<br>required–是否必填<br>example–举例说明<br>hidden–隐藏</p>
+<p><strong>@ApiIgnore()</strong>用于类或者方法上，可以不被swagger显示在页面上<br>比较简单, 这里不做举例</p>
+<p><strong>@ApiImplicitParam()</strong> 用于方法<br>表示单独的请求参数<br><strong>@ApiImplicitParams()</strong> 用于方法，包含多个 @ApiImplicitParam<br>name–参数ming<br>value–参数说明<br>dataType–数据类型<br>paramType–参数类型<br>example–举例说明</p>
+<h2 id="swagger2集成问题"><a href="#swagger2集成问题" class="headerlink" title="swagger2集成问题"></a>swagger2集成问题</h2><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation</span>(value=<span class="string">"获取用户详细信息"</span>, notes=<span class="string">"根据url的id来获取用户详细信息"</span>)</span><br><span class="line">   <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"id"</span>, value = <span class="string">"用户ID"</span>, required = <span class="keyword">true</span>, paramType=<span class="string">"path"</span>,dataType = <span class="string">"Long"</span>)</span><br><span class="line">   <span class="meta">@RequestMapping</span>(value=<span class="string">"/&#123;id&#125;"</span>, method=RequestMethod.GET) </span><br><span class="line">   <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">(@PathVariable Long id)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// 处理"/users/&#123;id&#125;"的GET请求，用来获取url中id值的User信息 </span></span><br><span class="line">       <span class="comment">// url中的id可通过@PathVariable绑定到函数的参数中 </span></span><br><span class="line">       <span class="keyword">return</span> users.get(id); </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>2018-10-10 13:49:54.478  WARN 2072 — [io-3333-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type ‘java.lang.String’ to required type ‘java.lang.Long’; nested exception is java.lang.NumberFormatException: For input string: “{id}”]</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p><strong>如果上诉代码没有写<code>paramType = “path”</code>会提示类型转换<code>String convert to Long</code>错误。</strong></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="http://blog.didispace.com/springbootswagger2/" target="_blank" rel="noopener">http://blog.didispace.com/springbootswagger2/</a></p>
+<p><a href="https://www.cnblogs.com/fengli9998/p/7921601.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengli9998/p/7921601.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/CDH-Hadoop高可用启用与禁用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -702,7 +896,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -713,7 +907,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -724,7 +918,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
